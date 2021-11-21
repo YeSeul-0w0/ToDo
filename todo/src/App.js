@@ -1,6 +1,9 @@
 import './App.css';
 import Header from "./tools/Header";
 import Footer from "./tools/Footer";
+import Account from "./member/Account";
+
+
 
 function App() {
   return (
@@ -8,7 +11,7 @@ function App() {
         <Header>
         </Header>
         <div id="content">
-           컨텐츠 내용
+            <Account></Account>
         </div>
         <Footer>
 
