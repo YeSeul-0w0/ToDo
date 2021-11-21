@@ -1,6 +1,8 @@
 import {useState} from "react";
+import SignUpButton from "../button/SignUpButton";
 
-function Login(){
+function Login(props){
+    console.log(props.history)
     const [id, setId]=useState("");
     const [password, setPassword]=useState("");
 
@@ -17,6 +19,7 @@ function Login(){
 
     const onSubmit=(event)=>{
         event.preventDefault();
+
     }
     return(
         <div>
@@ -37,7 +40,7 @@ function Login(){
                     required />
                 <input type="submit" value="Login" />
             </form>
-            <button> 회원가입 </button>
+            <SignUpButton/>
         </div>
     )
 }

@@ -1,4 +1,5 @@
 import {useState} from "react";
+import LogInButton from "../button/LogInButton";
 
 function Account(){
     const [newId, setNewId]=useState("");
@@ -70,6 +71,7 @@ function Account(){
                     required />
                 <input type="submit" value="Login" />
             </form>
+            <LogInButton/>
         </div>
     )
 }
