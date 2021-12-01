@@ -1,7 +1,9 @@
 import {useState} from "react";
 import LogInButton from "../button/LogInButton";
+import useRouter from "use-react-router";
 
 function Account(){
+    const router=useRouter();
     const [newId, setNewId]=useState("");
     const [newPassword, setNewPassword]=useState("");
     const [newCheckPassword, setCheckPassword]=useState("");
@@ -30,6 +32,7 @@ function Account(){
                     password:newPassword
                 }
                 localStorage.setItem(newId,JSON.stringify(pass));
+                router.history.push("/todo")
             }
             else{
                 alert("비밀번호가 일치하지 않습니다.")
