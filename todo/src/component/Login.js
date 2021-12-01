@@ -1,8 +1,9 @@
 import {useState} from "react";
 import SignUpButton from "../button/SignUpButton";
+import useRouter from "use-react-router";
 
-function Login(props){
-    console.log(props.history)
+function Login(){
+    const router=useRouter();
     const [id, setId]=useState("");
     const [password, setPassword]=useState("");
 
@@ -19,6 +20,21 @@ function Login(props){
 
     const onSubmit=(event)=>{
         event.preventDefault();
+        if(localStorage.getItem(id)==null){
+            alert("가입 되지 않는 id 입니다.");
+            setId("");
+            setPassword("");
+        }
+        else{
+            const check=JSON.parse(localStorage.getItem(id)).password;
+            if(check===password){
+                router.history.push("/todo");
+            }
+            else{
+                alert("비밀번호가 일치하지 않습니다.");
+            }
+        }
+
 
     }
     return(
