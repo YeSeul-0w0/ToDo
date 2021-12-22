@@ -2,10 +2,8 @@ import {useState} from "react";
 import LogInButton from "../button/LogInButton";
 import useRouter from "use-react-router";
 
-function Account(){
+function Account({ id, setId, password, setPassword }){
     const router=useRouter();
-    const [newId, setNewId]=useState("");
-    const [newPassword, setNewPassword]=useState("");
     const [newCheckPassword, setCheckPassword]=useState("");
 
     const onChange=(event)=>{
@@ -14,10 +12,10 @@ function Account(){
         }=event;
 
         if(name==="newId"){
-            setNewId(value);
+            setId(value);
         }
         else if(name==="newPassword"){
-            setNewPassword(value);
+            setPassword(value);
         }
         else if(name==="newCheckPassword"){
             setCheckPassword(value);
@@ -26,12 +24,12 @@ function Account(){
 
     const onSubmit=(event)=>{
         event.preventDefault();
-        if (localStorage.getItem(newId)===null){
-            if(newPassword===newCheckPassword){
+        if (localStorage.getItem(id)===null){
+            if(password===newCheckPassword){
                 const pass={
-                    password:newPassword
+                    password:password
                 }
-                localStorage.setItem(newId,JSON.stringify(pass));
+                localStorage.setItem(id,JSON.stringify(pass));
                 router.history.push("/todo")
             }
             else{
@@ -42,8 +40,8 @@ function Account(){
             alert("중복된 id 값 입니다.")
 
         }
-        setNewId("");
-        setNewPassword("");
+        setId("");
+        setPassword("");
         setCheckPassword("");
     }
 
@@ -55,14 +53,14 @@ function Account(){
                     name="newId"
                     type="newId"
                     placeholder="아이디 입력"
-                    value={newId}
+                    value={id}
                     onChange={onChange}
                     required />
                 <input
                     name="newPassword"
                     type="password"
                     placeholder="비밀번호 입력"
-                    value={newPassword}
+                    value={password}
                     onChange={onChange}
                     required />
                 <input

@@ -1,4 +1,4 @@
-function TodoComponent(){
+function TodoComponent({id}){
     return(
         <div>
              main
