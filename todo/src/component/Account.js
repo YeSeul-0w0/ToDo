@@ -2,8 +2,11 @@ import {useState} from "react";
 import LogInButton from "../button/LogInButton";
 import useRouter from "use-react-router";
 
-function Account({ id, setId, password, setPassword }){
+function Account({ id, setId }){
     const router=useRouter();
+    const [newUserId, setNewUserId]=useState(id);
+    const [newUserPassword, setNewUserPassword]=useState("");
+
     const [newCheckPassword, setCheckPassword]=useState("");
 
     const onChange=(event)=>{
@@ -12,10 +15,11 @@ function Account({ id, setId, password, setPassword }){
         }=event;
 
         if(name==="newId"){
-            setId(value);
+            setNewUserId(value)
+
         }
         else if(name==="newPassword"){
-            setPassword(value);
+            setNewUserPassword(value);
         }
         else if(name==="newCheckPassword"){
             setCheckPassword(value);
@@ -24,12 +28,13 @@ function Account({ id, setId, password, setPassword }){
 
     const onSubmit=(event)=>{
         event.preventDefault();
-        if (localStorage.getItem(id)===null){
-            if(password===newCheckPassword){
+        if (localStorage.getItem(newUserId)===null){
+            if(newUserPassword===newCheckPassword){
                 const pass={
-                    password:password
+                    password:newUserPassword
                 }
-                localStorage.setItem(id,JSON.stringify(pass));
+                localStorage.setItem(newUserId,JSON.stringify(pass));
+                setId(newUserId);
                 router.history.push("/todo")
             }
             else{
@@ -40,8 +45,8 @@ function Account({ id, setId, password, setPassword }){
             alert("중복된 id 값 입니다.")
 
         }
-        setId("");
-        setPassword("");
+        setNewUserId("");
+        setNewUserPassword("");
         setCheckPassword("");
     }
 
@@ -53,14 +58,14 @@ function Account({ id, setId, password, setPassword }){
                     name="newId"
                     type="newId"
                     placeholder="아이디 입력"
-                    value={id}
+                    value={newUserId}
                     onChange={onChange}
                     required />
                 <input
                     name="newPassword"
                     type="password"
                     placeholder="비밀번호 입력"
-                    value={password}
+                    value={newUserPassword}
                     onChange={onChange}
                     required />
                 <input

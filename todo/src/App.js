@@ -11,7 +11,8 @@ import Footer from "./tools/Footer";
 
 function App() {
     const [id, setId] = useState('');
-    const [password, setPassword] = useState('');
+
+
     return (
         <>
             <Header>
@@ -19,9 +20,9 @@ function App() {
             <div id="content">
                 <Router>
                     <Switch>
-                        <Route exact path="/" component={() => <Login id={id} setId={setId} password={password} setPassword={setPassword} exact />} />
+                        <Route exact path="/" component={() => <Login id={id} setId={setId} exact />} />
                         <Route path="/todo" component={() => <TodoComponent id={id} />} exact />
-                        <Route path="/auth" component={() => <Account id={id} setId={setId} password={password} setPassword={setPassword} exact />} />
+                        <Route path="/auth" component={() => <Account id={id} setId={setId} exact />} />
                     </Switch>
                 </Router>
             </div>
