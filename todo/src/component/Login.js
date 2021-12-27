@@ -1,6 +1,6 @@
 import SignUpButton from "../button/SignUpButton";
 import useRouter from "use-react-router";
-import {useEffect, useState} from "react";
+import {useState} from "react";
 
 function Login({id,setId}){
     const router=useRouter();
@@ -8,9 +8,6 @@ function Login({id,setId}){
     const [userId, setUserId]=useState(id);
     const [userPassword,setUserPassword]=useState("");
 
-   useEffect(()=>{
-       console.log("로그인~")
-   },[])
 
     const onChange=(event)=>{
         const name=event.target.name;
