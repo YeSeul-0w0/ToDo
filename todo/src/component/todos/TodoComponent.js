@@ -1,6 +1,8 @@
-import TodoInput from "./TodoInput";
 import LogoutButton from "../../button/LogoutButton";
 import {useEffect, useState} from "react";
+import TodoItem from "./TodoItem";
+import TodoList from "./TodoList"
+import InputFrom from "./InputFrom";
 
 function TodoComponent(){
     const key=JSON.parse(localStorage.getItem("userInfo"))+"_todo"
@@ -66,9 +68,14 @@ function TodoComponent(){
     }
     return(
         <div>
-            
-            <TodoInput />
-            <LogoutButton/>
+            <TodoList form={<InputFrom addTodo={addTodo} />}>
+            <TodoItem
+                todos={todos}
+                toggleTodo={toggleTodo}
+                removeTodo={removeTodo}
+            />
+                <LogoutButton/>
+            </TodoList>
         </div>
     )
 }

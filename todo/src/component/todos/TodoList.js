@@ -10,3 +10,5 @@ function TodoList({form, children}){
         </main>
     )
 }
+
+export default TodoList;
