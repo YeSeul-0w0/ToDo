@@ -34,6 +34,7 @@ function Account({ id, setId }){
                     password:newUserPassword
                 }
                 localStorage.setItem(newUserId,JSON.stringify(pass));
+                localStorage.setItem("loginInfo",JSON.stringify(newUserId));
                 setId(newUserId);
                 router.history.push("/todo")
             }

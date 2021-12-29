@@ -14,8 +14,6 @@ function Login({id,setId}){
         const value=event.target.value;
         if(name==="id"){
             setUserId(value)
-            console.log(value);
-
         }
         else if(name==="password"){
             setUserPassword(value)
@@ -32,6 +30,7 @@ function Login({id,setId}){
         else{
             const check=JSON.parse(localStorage.getItem(userId)).password;
             if(check===userPassword){
+                localStorage.setItem("loginInfo",JSON.stringify(userId));
                 router.history.push("/todo");
                 setId(userId)
             }
